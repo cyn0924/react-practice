@@ -138,7 +138,7 @@ export default function App() {
 
     //filter를 사용해 검색어가 포함된 메모만 남깁니다.
     return notes.filter(
-      (음표) =>
+      (note) =>
 
         //메모 제목을 소문자로 바꾼 다음
         //검색어가 포함되어 있는지 검사합니다.
@@ -323,7 +323,7 @@ export default function App() {
       setNotes((prevNotes) =>
         //map은 배열의 각 메모를 확인한 다음
       //수정된 내요을 포함하는 새로운 배열을 반환합니다.
-        prevNotes.map((음표) => {
+        prevNotes.map((note) => {
 
           //현재 확인 중인 메모의 id가 수정 대상 id와 같은지 검사합니다.
           if (note.id === editId) {
@@ -394,7 +394,7 @@ export default function App() {
 
   // 메모 카드의 수정 버튼을 클릭했을 때 실행되는 함수입니다.
   //매개 변수 note에는 사용자가 선택한 메모 객체가 전달됩니다.
-  const handleEdit = (음표) => {
+  const handleEdit = (note) => {
     // 선택한 메모의 제목을 제목 입력창에 넣습니다.
     setTitle(note.title);
 
@@ -446,7 +446,7 @@ export default function App() {
     //filter를 사용해 삭제할 id와 다른 메모만 남깁니다.
     //결과적으로 전달 받은 id를 가진 메모가 배열에서 제거됩니다.
     setNotes((prevNotes) =>
-      prevNotes.filter((음표) => note.id !== id)
+      prevNotes.filter((note) => note.id !== id)
     );
 
     // 수정 중인 메모를 삭제한 경우 입력창 초기화
@@ -623,7 +623,7 @@ export default function App() {
             ) : (
 
               //filteredNotes 배열을 순회하면서 메모 카드를 만듭니다.
-              filteredNotes.map((음표) => (
+              filteredNotes.map((note) => (
 
                 //각각의 메모를 표시하는 카드입니다.
                 <div
@@ -654,7 +654,7 @@ export default function App() {
                     <button
                       type="button"
                       onClick={() =>
-                        handleEdit(음표)
+                        handleEdit(note)
                       }
                     >
                       수정
