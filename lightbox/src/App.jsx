@@ -97,7 +97,7 @@ function App() {
             
             {/* 현재 선택된 이미지의 큰 버전을 화면에 표시합니다. */}
             <img 
-              src={image[currentIndex]}
+              src={images[currentIndex]}
 
               // 라이트박스 이미지에 대한 대체 텍스트입니다.
               alt="lightbox"
