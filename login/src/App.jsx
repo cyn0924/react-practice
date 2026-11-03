@@ -170,18 +170,18 @@ function App() {
 
       <h1 className="title">로그인</h1>
 
-      //!isLoggedIn을 사용하여 로그인 상태가 아닌지 확인합니다.
-      //false이면 true로 바꿔주고, true는 false로 바꿔줍니다.
-      //로그인이면 로그아웃을 로그아웃일때에는 로그인 상태로 바꿀수 있습니다.
+      {/* !isLoggedIn을 사용하여 로그인 상태가 아닌지 확인합니다. */}
+      {/* false이면 true로 바꿔주고, true는 false로 바꿔줍니다. */}
+      {/* 로그인이면 로그아웃을 로그아웃일때에는 로그인 상태로 바꿀수 있습니다. */}
       {!isLoggedIn ? (
 
         //로그아웃 상태에서 로그인 폼을 표시하는 카드입니다.
         <div className="card">
 
-          //이메일과 비밀번호를 입력받는 form 요소입니다.
-          //handleLogin함수를 연결했기 때문에
-          //로그인 버튼을 클릭하거나 입력창에서 엔터키를 누르면 
-          //handleLogin함수가 실행됩니다.
+          {/*이메일과 비밀번호를 입력받는 form 요소입니다. */}
+          {/* handleLogin함수를 연결했기 때문에 */}
+          {/* 로그인 버튼을 클릭하거나 입력창에서 엔터키를 누르면  */}
+          {/* handleLogin함수가 실행됩니다. */}
           <form onSubmit={handleLogin}>
             <input
               name="email"
@@ -206,13 +206,13 @@ function App() {
               placeholder="비밀번호"
             />
 
-            //로그인 폼을 제출하는 버튼입니다.
-            //type="submit"으로 설정했기 때문에 버튼을 클릭하면
-            //form의 onSubmit에 연결된 handleLogin함수가 실행됩니다.
+            {/* 로그인 폼을 제출하는 버튼입니다. */}
+            {/* type="submit"으로 설정했기 때문에 버튼을 클릭하면 */}
+            {/* form의 onSubmit에 연결된 handleLogin함수가 실행됩니다. */}
             <button type="submit">로그인</button>
           </form>
 
-          //실습에서 사용할 테스트 게정을 화면에 표시합니다.
+          {/* 실습에서 사용할 테스트 게정을 화면에 표시합니다. */}
           <div className="info">admin@test.com / 1234</div>
         </div>
       ) : (
@@ -220,17 +220,17 @@ function App() {
         //로그인 상태에서 사용자 정보를 표시하는 카드입니다.
         <div className="card">
 
-          //user가 존재할때 로그인한 사용자의 이름을 표시합니다.
+          {/* user가 존재할때 로그인한 사용자의 이름을 표시합니다. */}
           <p>{user.name}</p>
-          //로그인한 사용자의 이메일도 표시합니다.
+          {/* 로그인한 사용자의 이메일도 표시합니다. */}
           <p>{user.email}</p>
-          //사용자가 로그아웃할 수 있도록 로그아웃 버튼을 만들고
-          //버튼을 누르면 handleLogout함수가 실행되어 로그아웃을 시켜줍니다.
+          {/* 사용자가 로그아웃할 수 있도록 로그아웃 버튼을 만들고 */}
+          {/* 버튼을 누르면 handleLogout함수가 실행되어 로그아웃을 시켜줍니다. */}
           <button onClick={handleLogout}>로그아웃</button>
         </div>
       )}
 
-      //로그인 성공, 로그인 실패 도는 로그아웃 메시지를 표시합니다.
+      {/* 로그인 성공, 로그인 실패 도는 로그아웃 메시지를 표시합니다. */}
       {message && <p className="message">{message}</p>}
     </div>
   );
