@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap");
+
+:root {
+  font-family: "Noto Sans KR", sans-serif;
+  color: #ffffff;
+  background: #0f172a;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(255, 255, 255, 0.25),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(147, 197, 253, 0.3),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #0ea5e9 0%,
+      #2563eb 48%,
+      #4338ca 100%
+    );
+}
+
+.weatherCard {
+  width: min(100%, 620px);
+  padding: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 30px 70px rgba(15, 23, 42, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.weatherCard h1 {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  text-shadow: 0 5px 20px rgba(15, 23, 42, 0.2);
+}
+
+.description {
+  margin: 13px 0 30px;
+  color: rgba(255, 255, 255, 0.78);
+  text-align: center;
+  font-size: 0.96rem;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.searchForm {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.searchForm input {
+  min-width: 0;
+  height: 54px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 15px;
+  outline: none;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.13);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.searchForm input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.searchForm input:focus {
+  border-color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+.searchForm button {
+  min-width: 100px;
+  height: 54px;
+  padding: 0 22px;
+  border-radius: 15px;
+  color: #1d4ed8;
+  font-weight: 800;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.searchForm button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(15, 23, 42, 0.24);
+}
+
+.searchForm button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.searchForm button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.message,
+.errorMessage {
+  margin: 22px 0 0;
+  padding: 14px 18px;
+  border-radius: 13px;
+  text-align: center;
+  font-size: 0.94rem;
+  font-weight: 600;
+}
+
+.message {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.errorMessage {
+  border: 1px solid rgba(254, 202, 202, 0.5);
+  color: #fee2e2;
+  background: rgba(190, 18, 60, 0.3);
+}
+
+.weatherResult {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  animation: resultShow 0.45s ease;
+}
+
+.weatherResult h2 {
+  margin: 0;
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.weatherIcon {
+  display: block;
+  width: 120px;
+  height: 120px;
+  margin: 4px auto -10px;
+  filter: drop-shadow(0 12px 20px rgba(15, 23, 42, 0.25));
+}
+
+.temperature {
+  font-size: clamp(3.5rem, 12vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.08em;
+  text-shadow: 0 8px 25px rgba(15, 23, 42, 0.2);
+}
+
+.weatherDescription {
+  margin: 8px 0 26px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.weatherInfo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.infoBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 18px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.infoBox:hover {
+  background: rgba(255, 255, 255, 0.17);
+  transform: translateY(-3px);
+}
+
+.infoBox span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.8rem;
+}
+
+.infoBox strong {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@keyframes resultShow {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .app {
+    align-items: flex-start;
+    padding: 24px 14px;
+  }
+
+  .weatherCard {
+    padding: 30px 20px;
+    border-radius: 24px;
+  }
+
+  .description {
+    margin-bottom: 24px;
+  }
+
+  .weatherInfo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .searchForm {
+    grid-template-columns: 1fr;
+  }
+
+  .searchForm button {
+    width: 100%;
+  }
+
+  .weatherInfo {
+    gap: 9px;
+  }
+
+  .infoBox {
+    padding: 15px 7px;
+  }
+
+  .infoBox strong {
+    font-size: 0.9rem;
+  }
+}
