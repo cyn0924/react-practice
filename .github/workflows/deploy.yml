@@ -1,3 +1,4 @@
+
 name: Deploy React Projects to GitHub Pages
 
 on:
@@ -31,17 +32,23 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
-      - name: Build card_slide
-        working-directory: card_slide
+      - name: Build all React projects
         run: |
-          npm ci
-          npm run build -- --outDir ../public/card_slide
+          mkdir -p public
 
-      - name: Build study_timer
-        working-directory: study_timer
-        run: |
-          npm ci
-          npm run build -- --outDir ../public/study_timer
+          for package_json in */package.json; do
+            [ -e "$package_json" ] || continue
+
+            project="${package_json%/package.json}"
+
+            echo "Building project: $project"
+
+            (
+              cd "$project"
+              npm ci
+              npm run build -- --base="/react-practice/$project/" --outDir="$GITHUB_WORKSPACE/public/$project"
+            )
+          done
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3

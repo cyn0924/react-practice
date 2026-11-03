@@ -1,0 +1,470 @@
+/* 모든 요소의 크기 계산 방식을 통일합니다. */
+* {
+  box-sizing: border-box;
+}
+
+/* 브라우저의 기본 여백을 제거합니다. */
+html,
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100%;
+}
+
+/* 페이지 전체 배경과 글꼴을 설정합니다. */
+body {
+  min-height: 100vh;
+  font-family:
+    "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  color: #1e293b;
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(167, 139, 250, 0.4),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 85% 85%,
+      rgba(96, 165, 250, 0.35),
+      transparent 32%
+    ),
+    linear-gradient(135deg, #eef2ff 0%, #faf5ff 50%, #eff6ff 100%);
+}
+
+/* React 앱을 화면 중앙에 배치합니다. */
+#root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 32px 20px;
+}
+
+/* To-Do 앱 전체 카드입니다. */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 760px;
+  padding: 44px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 30px;
+  box-shadow:
+    0 30px 70px rgba(79, 70, 229, 0.16),
+    0 10px 30px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(20px);
+  animation: containerAppear 0.6s ease-out;
+}
+
+/* 카드 오른쪽 위 장식입니다. */
+.container::before {
+  position: absolute;
+  top: -90px;
+  right: -90px;
+  width: 210px;
+  height: 210px;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.2),
+    rgba(59, 130, 246, 0.12)
+  );
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+/* 카드 왼쪽 아래 장식입니다. */
+.container::after {
+  position: absolute;
+  bottom: -120px;
+  left: -100px;
+  width: 230px;
+  height: 230px;
+  background: rgba(96, 165, 250, 0.1);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+/* To-Do 리스트 제목입니다. */
+.title {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 34px;
+  color: #312e81;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: -1.8px;
+}
+
+/* 제목 아래의 그라데이션 장식선입니다. */
+.title::after {
+  display: block;
+  width: 60px;
+  height: 6px;
+  margin: 14px auto 0;
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+  border-radius: 999px;
+  content: "";
+}
+
+/* 할 일 입력 영역입니다. */
+.inputWrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 12px;
+  padding: 8px;
+  margin-bottom: 30px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* 입력창을 선택했을 때 입력 영역을 강조합니다. */
+.inputWrap:focus-within {
+  background: #ffffff;
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 5px rgba(139, 92, 246, 0.12);
+}
+
+/* 할 일을 입력하는 입력창입니다. */
+.input {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 16px;
+  color: #1e293b;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+/* 입력창 안내 문구입니다. */
+.input::placeholder,
+.editInput::placeholder {
+  color: #94a3b8;
+}
+
+/* 모든 버튼의 공통 스타일입니다. */
+button {
+  flex-shrink: 0;
+  padding: 11px 17px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  border-radius: 11px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+/* 버튼에 마우스를 올렸을 때 적용됩니다. */
+button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.07);
+}
+
+/* 버튼을 클릭하는 순간 적용됩니다. */
+button:active {
+  transform: translateY(0) scale(0.97);
+}
+
+/* 키보드로 요소를 선택했을 때 표시합니다. */
+button:focus-visible,
+.input:focus-visible,
+.editInput:focus-visible {
+  outline: 3px solid rgba(99, 102, 241, 0.35);
+  outline-offset: 3px;
+}
+
+/* 추가 버튼입니다. */
+.addButton {
+  min-width: 86px;
+  background: linear-gradient(135deg, #8b5cf6, #4f46e5);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.28);
+}
+
+/* 할 일 목록입니다. */
+.list {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* 각각의 할 일 항목입니다. */
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 76px;
+  padding: 17px 19px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid #e9eaf3;
+  border-left: 5px solid #8b5cf6;
+  border-radius: 17px;
+  box-shadow: 0 7px 20px rgba(15, 23, 42, 0.06);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  animation: itemAppear 0.4s ease-out;
+}
+
+/* 할 일 항목에 마우스를 올렸을 때 적용됩니다. */
+.listItem:hover {
+  transform: translateY(-3px);
+  border-color: #c4b5fd;
+  box-shadow: 0 14px 30px rgba(79, 70, 229, 0.12);
+}
+
+/* 할 일 내용입니다. */
+.todoText {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  padding: 6px 4px 6px 34px;
+  color: #334155;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition:
+    color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+/* 할 일 앞의 체크 원입니다. */
+.todoText::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  color: #ffffff;
+  font-size: 13px;
+  background: #ffffff;
+  border: 2px solid #a78bfa;
+  border-radius: 50%;
+  content: "";
+  transform: translateY(-50%);
+  transition: 0.25s ease;
+}
+
+/* 할 일에 마우스를 올렸을 때 적용됩니다. */
+.todoText:hover {
+  color: #7c3aed;
+}
+
+/* 완료된 할 일의 글자 스타일입니다. */
+.todoText.completed {
+  color: #94a3b8;
+  text-decoration: line-through;
+  text-decoration-color: #a78bfa;
+  text-decoration-thickness: 2px;
+}
+
+/* 완료된 할 일의 체크 원입니다. */
+.todoText.completed::before {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-color: #10b981;
+  content: "✓";
+}
+
+/* 버튼들을 한 줄로 묶는 영역입니다. */
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* 완료 버튼입니다. */
+.completeButton {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 6px 15px rgba(5, 150, 105, 0.22);
+}
+
+/* 수정 버튼입니다. */
+.editButton {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  box-shadow: 0 6px 15px rgba(217, 119, 6, 0.22);
+}
+
+/* 삭제 버튼입니다. */
+.deleteButton {
+  background: linear-gradient(135deg, #f43f5e, #e11d48);
+  box-shadow: 0 6px 15px rgba(225, 29, 72, 0.22);
+}
+
+/* 수정 모드의 전체 영역입니다. */
+.editWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+/* 수정 내용을 작성하는 입력창입니다. */
+.editInput {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  color: #1e293b;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  background: #f8fafc;
+  border: 2px solid #c4b5fd;
+  border-radius: 11px;
+  outline: none;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* 수정 입력창을 선택했을 때 적용됩니다. */
+.editInput:focus {
+  background: #ffffff;
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1);
+}
+
+/* 저장 버튼입니다. */
+.saveButton {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.22);
+}
+
+/* 취소 버튼입니다. */
+.cancelButton {
+  color: #475569;
+  background: #e2e8f0;
+  box-shadow: 0 6px 15px rgba(100, 116, 139, 0.14);
+}
+
+/* 등록된 할 일이 없을 때 표시되는 문구입니다. */
+.emptyText {
+  padding: 48px 20px;
+  color: #94a3b8;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  background: rgba(248, 250, 252, 0.8);
+  border: 2px dashed #cbd5e1;
+  border-radius: 17px;
+}
+
+/* 전체 카드가 나타나는 애니메이션입니다. */
+@keyframes containerAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 새로운 할 일 항목이 나타나는 애니메이션입니다. */
+@keyframes itemAppear {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 태블릿과 모바일 화면에 적용됩니다. */
+@media (max-width: 680px) {
+  #root {
+    align-items: flex-start;
+    padding: 20px 14px;
+  }
+
+  .container {
+    padding: 32px 21px;
+    border-radius: 23px;
+  }
+
+  .title {
+    margin-bottom: 26px;
+    font-size: 32px;
+  }
+
+  .listItem {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .buttonGroup {
+    justify-content: flex-end;
+  }
+
+  .editWrap {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* 작은 모바일 화면에 적용됩니다. */
+@media (max-width: 440px) {
+  .container {
+    padding: 27px 16px;
+  }
+
+  .inputWrap {
+    flex-direction: column;
+  }
+
+  .addButton {
+    width: 100%;
+  }
+
+  .buttonGroup {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .editWrap .buttonGroup {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .buttonGroup button {
+    padding: 10px 7px;
+  }
+
+  .todoText {
+    padding-left: 31px;
+  }
+}
