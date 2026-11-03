@@ -466,18 +466,18 @@ export default function App() {
     //애플리케이션 전체를 감싸는 최상위 영역입니다.
     <div className="container">
 
-      //메인 제목
+      {/* //메인 제목 */}
       <h1 className="mainTitle">메모 앱</h1>
 
-      //삼항 연산자를 사용하여 로그인 상태에 따라 서로 다른 화면을 보여줍니다.
-      //isLoggedIn이 false이면 로그인 화면을 보여주고, true이면 메모 관리 화면을 보여줍니다.
+      {/* //삼항 연산자를 사용하여 로그인 상태에 따라 서로 다른 화면을 보여줍니다. */}
+      {/* //isLoggedIn이 false이면 로그인 화면을 보여주고, true이면 메모 관리 화면을 보여줍니다. */}
       {!isLoggedIn ? (
 
         //로그인하지 않을 상태에서 보여주는 카드 영역입니다.
         <div className="card">
 
-          //로그인 입력 폼입니다.
-          //사용자가 로그인 버튼을 누르면 handleLogin함수가 실행됩니다.
+          {/* //로그인 입력 폼입니다. */}
+          {/* //사용자가 로그인 버튼을 누르면 handleLogin함수가 실행됩니다. */}
           <form onSubmit={handleLogin}>
 
             <input
@@ -517,16 +517,16 @@ export default function App() {
         //로그인한 상태에서 보여주는 메모 관리 영역입니다.
         <div className="grid">
 
-          //사용자 정보와 메모입력폼이 들어가는 왼쪽 영역입니다.
+          {/* //사용자 정보와 메모입력폼이 들어가는 왼쪽 영역입니다. */}
           <div className="left">
 
             <div className="userInfo">
 
-              //사용자 정보가 존재 할 때 이름을 출력합니다.
-              //user가 null이어도 오류가 발생하지 않게 합니다.
+              {/* //사용자 정보가 존재 할 때 이름을 출력합니다. */}
+              {/* //user가 null이어도 오류가 발생하지 않게 합니다. */}
               <p>{user?.name}</p>
 
-              //로그인한 사용자의 이메일을 출력합니다.
+              {/* //로그인한 사용자의 이메일을 출력합니다. */}
               <p>{user?.email}</p>
 
 
@@ -540,15 +540,15 @@ export default function App() {
             </div>
 
 
-            //메모를 새로 추가하거나 기존 메모를 수정하는 폼입니다. 
-            //폼을 제출하면 handleSubmit 함수가 실행됩니다.
+            {/* //메모를 새로 추가하거나 기존 메모를 수정하는 폼입니다.  */}
+            {/* //폼을 제출하면 handleSubmit 함수가 실행됩니다. */}
             <form onSubmit={handleSubmit}>
 
-              //폼제목
+              {/* //폼제목 */}
               <h2>
 
-                //editId가 있으면 메모 수정 문구를 표시하고,
-                //editId가 null이면 새 메모 작성 문구를 표시합니다.
+                {/* //editId가 있으면 메모 수정 문구를 표시하고, */}
+                {/* //editId가 null이면 새 메모 작성 문구를 표시합니다. */}
                 {editId !== null
                   ? "메모 수정"
                   : "새 메모 작성"}
@@ -571,15 +571,15 @@ export default function App() {
               />
 
               <button type="submit">
-                //수정중이면 "메모수정"을 표시하고, 새메모 작성중이면 "메모 추가"를 표시합니다.
+                {/* //수정중이면 "메모수정"을 표시하고, 새메모 작성중이면 "메모 추가"를 표시합니다. */}
                 {editId !== null
                   ? "메모 수정"
                   : "메모 추가"}
 
               </button>
 
-              //editId가 null이 아닐 때만 수정 취소 버튼을 표시합니다.
-              //따라서 새 메모 작성 상태에서는 이 버튼이 보이지 않습니다.
+              {/* //editId가 null이 아닐 때만 수정 취소 버튼을 표시합니다. */}
+              {/* //따라서 새 메모 작성 상태에서는 이 버튼이 보이지 않습니다. */}
               {editId !== null && (
                 <button
                   type="button"
@@ -593,10 +593,10 @@ export default function App() {
 
           </div>
 
-          //검색창과 메모 목록이 들어가는 오른쪽 영역입니다.
+          {/* //검색창과 메모 목록이 들어가는 오른쪽 영역입니다. */}
           <div className="right">
 
-            //작성된 메모를 검색하는 입력창입니다.
+            {/* //작성된 메모를 검색하는 입력창입니다. */}
             <input
               value={search}
 
@@ -611,9 +611,9 @@ export default function App() {
               전체 메모 {filteredNotes.length}개
             </p>
 
-            //검색 결과가 비어 있는지 확인합니다.
-            //결과가 없으면 빈 목록메시지를 보여주고,
-            //결과가 있으면 메모 카드 목록을 보여줍니다.
+            {/* //검색 결과가 비어 있는지 확인합니다. */}
+            {/* //결과가 없으면 빈 목록메시지를 보여주고, */}
+            {/* //결과가 있으면 메모 카드 목록을 보여줍니다. */}
             {filteredNotes.length === 0 ? (
 
               //표시할 메모가 없을 때 보여주는 안내 영역입니다.
@@ -634,17 +634,17 @@ export default function App() {
                 >
 
 
-                  //메모 제목
+                  {/* //메모 제목 */}
                   <h3>
                     {note.title}
                   </h3>
 
-                  //메모 내용
+                  {/* //메모 내용 */}
                   <p>
                     {note.content}
                   </p>
 
-                //마지막으로 수정된 시간
+                {/* //마지막으로 수정된 시간 */}
                   <small>
                     수정: {note.updatedAt}
                   </small>
@@ -680,8 +680,8 @@ export default function App() {
         </div>
       )}
 
-      //message에 문자열이 들어 있을 때만 안내 메시지를 표시합니다.
-      //message가 빈 문자열이면 이 p요소는 화면에 나타나지 않습니다.
+      {/* //message에 문자열이 들어 있을 때만 안내 메시지를 표시합니다. */}
+      {/* //message가 빈 문자열이면 이 p요소는 화면에 나타나지 않습니다. */}
       {message && (
         <p className="message">
           {message}

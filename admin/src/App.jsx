@@ -273,11 +273,11 @@ function App() {
     //전체 앱 화면을 감싸는 최상위 컨테이너입니다.
     <div className="container">
 
-      //앱 상단 제목
+      {/* //앱 상단 제목 */}
       <h1 className="mainTitle">권한 분리</h1>
 
-      //상단 메뉴 바
-      //페이지 이동 버튼과 로그인 상태 표시/로그아웃 버튼이 들어갑니다.
+      {/* //상단 메뉴 바 */}
+      {/* //페이지 이동 버튼과 로그인 상태 표시/로그아웃 버튼이 들어갑니다. */}
       <div className="topBar">
         <div>
           <button
@@ -311,7 +311,7 @@ function App() {
         )}
       </div>
 
-        //로그인 하지 않은 상태일 때만 로그인 폼을 화면에 보여줍니다.
+        {/* //로그인 하지 않은 상태일 때만 로그인 폼을 화면에 보여줍니다. */}
       {!isLoggedIn && (
         <div className="loginBox">
           <form onSubmit={handleLogin}>
@@ -347,22 +347,22 @@ function App() {
         </div>
       )}
 
-      //실제 페이지 내용이 출력되는 영역입니다.
+      {/* //실제 페이지 내용이 출력되는 영역입니다. */}
       <div className="pageArea">
 
-        //currentPage가 home이라면 HomePage가 렌더링 됩니다.
+        {/* //currentPage가 home이라면 HomePage가 렌더링 됩니다. */}
         {currentPage === "home" && <HomePage />}
 
-        //currentPage가 mypage이면 PrivateRoute로 감산 MyPage를 렌더링합니다.
-        //로그인하지 않은 경우 PrivateRoute가 접근 불가 화면을 대신 보여줍니다.
+        {/* //currentPage가 mypage이면 PrivateRoute로 감산 MyPage를 렌더링합니다. */}
+        {/* //로그인하지 않은 경우 PrivateRoute가 접근 불가 화면을 대신 보여줍니다. */}
         {currentPage === "mypage" && (
           <PrivateRoute isLoggedIn={isLoggedIn}>
             <MyPage user={user} />
           </PrivateRoute>
         )}
 
-        //currentPage가 admin이면 AdminPage로 감싼 AdminPage를 렌더링합니다.
-        //로그인 하지 않았거나 관리자 권한이 아닌 일반 계정으로 로그인하였다면 차단 화면을 보여줍니다.
+        {/* //currentPage가 admin이면 AdminPage로 감싼 AdminPage를 렌더링합니다. */}
+        {/* //로그인 하지 않았거나 관리자 권한이 아닌 일반 계정으로 로그인하였다면 차단 화면을 보여줍니다. */}
         {currentPage === "admin" && (
           <AdminRoute isLoggedIn={isLoggedIn} user={user}>
             <AdminPage />
@@ -370,7 +370,7 @@ function App() {
         )}
       </div>
 
-      //message 값이 비어있지 않을 때만 화면 아래에 안내 메시지를 출력합니다.
+      {/* //message 값이 비어있지 않을 때만 화면 아래에 안내 메시지를 출력합니다. */}
       {message && <p className="message">{message}</p>}
     </div>
   );

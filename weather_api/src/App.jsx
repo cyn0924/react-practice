@@ -115,19 +115,19 @@ function App() {
     //날씨 앱 전체 화면을 감싸는 최상위 영역입니다.
     <div className="app">
 
-    //날씨 검색 화면을 감싸는 카드영역입니다.
+    {/* //날씨 검색 화면을 감싸는 카드영역입니다. */}
       <div className="weatherCard">
 
-        //제목
+        {/* //제목 */}
         <h1>오늘의 날씨</h1>
 
-        //설명
+        {/* //설명 */}
         <p className="description">
           도시 이름을 입력하면 현재 날씨를 확인할 수 있습니다.
         </p>
 
-        //도시 검색창과 검색 버튼을 감싸는 form입니다.
-        //form을 제출하면 handleSubmit함수가 실행됩니다.
+        {/* //도시 검색창과 검색 버튼을 감싸는 form입니다. */}
+        {/* //form을 제출하면 handleSubmit함수가 실행됩니다. */}
         <form className="searchForm" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -140,44 +140,44 @@ function App() {
             onChange={(event) => setCity(event.target.value)}
           />
 
-          //form을 제출하는 버튼으로 설정합니다. 
-          //요청이 끝나면 다시 클릭할 수 있습니다.
+          {/* //form을 제출하는 버튼으로 설정합니다.  */}
+          {/* //요청이 끝나면 다시 클릭할 수 있습니다. */}
           <button type="submit" disabled={loading}>
 
-            //loading이 true이면 검색 중 문구를 표시합니다.
-            //loading이 false이면 검색 이라는 문구를 표시합니다.
+            {/* //loading이 true이면 검색 중 문구를 표시합니다. */}
+            {/* //loading이 false이면 검색 이라는 문구를 표시합니다. */}
             {loading ? "검색 중..." : "검색"}
           </button>
         </form>
 
-        //loading이 true일 때만 로딩 안내 문구를 표시합니다.
+        {/* //loading이 true일 때만 로딩 안내 문구를 표시합니다. */}
         {loading && (
           <p className="message">
             날씨 정보를 불러오는 중입니다...
           </p>
         )}
 
-        //error에 오류 메시지가 들어 있을 때만 오류 문구를 표시합니다.
+        {/* //error에 오류 메시지가 들어 있을 때만 오류 문구를 표시합니다. */}
         {error && (
           <p className="errorMessage">
 
-            //error 상태에 저장된 오류 내용을 화면에 출력합니다.
+            {/* //error 상태에 저장된 오류 내용을 화면에 출력합니다. */}
             {error}
           </p>
         )}
 
-        //weather 데이터가 있고 현재 로딩 중이 아닐 때 날씨 결과를 표시합니다.
+        {/* //weather 데이터가 있고 현재 로딩 중이 아닐 때 날씨 결과를 표시합니다. */}
         {weather && !loading && (
 
           //날씨 결과 전체를 감싸는 영역입니다.
           <div className="weatherResult">
 
-            //도시 이름과 국가 코드를 표시합니다.
+            {/* //도시 이름과 국가 코드를 표시합니다. */}
             <h2>
               {weather.name}, {weather.sys.country}
             </h2>
 
-          //현재 날씨 상태를 나타내는 아이콘 이미지 입니다.
+          {/* //현재 날씨 상태를 나타내는 아이콘 이미지 입니다. */}
             <img
               className="weatherIcon"
 
@@ -189,57 +189,57 @@ function App() {
               alt={weather.weather[0].description}
             />
 
-          //현재 기온을 섭씨 단위로 표시합니다.
+          {/* //현재 기온을 섭씨 단위로 표시합니다. */}
             <div className="temperature">
 
-              //Math.round는 소수점이 있는 온도를 정수로 반올림합니다.
+              {/* //Math.round는 소수점이 있는 온도를 정수로 반올림합니다. */}
               {Math.round(weather.main.temp)}℃
             </div>
 
-            //현재 날씨 상태를 글자로 표시합니다.
+            {/* //현재 날씨 상태를 글자로 표시합니다. */}
             <p className="weatherDescription">
               {weather.weather[0].description}
             </p>
 
-          //체감온도, 습도, 풍속 등의 상세 정보를 감싸는 영역입니다.
+          {/* //체감온도, 습도, 풍속 등의 상세 정보를 감싸는 영역입니다. */}
             <div className="weatherInfo">
 
-              //체감온도
+              {/* //체감온도 */}
               <div className="infoBox">
                 <span>체감 온도</span>
                 <strong>
 
-                  //체감 온도를 반올림하여 섭씨로 표시합니다.
+                  {/* //체감 온도를 반올림하여 섭씨로 표시합니다. */}
                   {Math.round(weather.main.feels_like)}℃
                 </strong>
               </div>
 
-            //습도
+            {/* //습도 */}
               <div className="infoBox">
                 <span>습도</span>
 
-                //습도 값을 % 단위로 표시합니다.
+                {/* //습도 값을 % 단위로 표시합니다. */}
                 <strong>
                   {weather.main.humidity}%
                 </strong>
               </div>
 
-          //풍속
+          {/* //풍속 */}
               <div className="infoBox">
                 <span>풍속</span>
                 <strong>
 
-                  //초속 미터 단위
+                  {/* //초속 미터 단위 */}
                   {weather.wind.speed} m/s
                 </strong>
               </div>
 
-          //최저 온도
+          {/* //최저 온도 */}
               <div className="infoBox">
                 <span>최저 온도</span>
                 <strong>
 
-                  //최저 온도를 반올림하여 섭씨로 표시합니다.
+                  {/* //최저 온도를 반올림하여 섭씨로 표시합니다. */}
                   {Math.round(weather.main.temp_min)}℃
                 </strong>
               </div>
@@ -254,7 +254,7 @@ function App() {
               <div className="infoBox">
                 <span>기압</span>
                 <strong>
-                  //기압을 hPa 단위로 표시합니다.
+                  {/* //기압을 hPa 단위로 표시합니다. */}
                   {weather.main.pressure} hPa
                 </strong>
               </div>

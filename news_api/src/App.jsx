@@ -291,10 +291,10 @@ function App() {
     //뉴스 앱 전체를 감싸는 가장 바깥쪽 컨테이너입니다.
     <div className="container">
 
-      //제목
+      {/* //제목 */}
       <h1 className="title">뉴스 API 앱</h1>
 
-      //검색창과 검색 버튼, 새로고침 버튼을 감싸는 form 입니다.
+      {/* //검색창과 검색 버튼, 새로고침 버튼을 감싸는 form 입니다. */}
       <form
 
         //form이 제출 될때 handleSearchSubmit 가 실행됩니다.
@@ -336,10 +336,10 @@ function App() {
         </button>
       </form>
 
-      //버튼들을 감싸는 영역
+      {/* //버튼들을 감싸는 영역 */}
       <div className="categoryWrap">
 
-        //CATEGORIES.map : map()은 배열에 들어 있는 값을 하나씩 꺼내서 반복 작업할 때 사용합니다.
+        {/* //CATEGORIES.map : map()은 배열에 들어 있는 값을 하나씩 꺼내서 반복 작업할 때 사용합니다. */}
         {CATEGORIES.map((item) => (
           <button
             type="button"
@@ -362,45 +362,45 @@ function App() {
             }`}
           >
 
-            //현재 카테고리 이름을 버튼 안에 표시합니다.
+            {/* //현재 카테고리 이름을 버튼 안에 표시합니다. */}
             {item}
           </button>
         ))}
       </div>
 
-        //현재 검색 조건과 페이지 번호를 보여주는 정보영역입니다.
+        {/* //현재 검색 조건과 페이지 번호를 보여주는 정보영역입니다. */}
       <div className="infoBar">
 
-        //검색 중이면 검색어를, 검색하지 않으면 카테고리를 표시합니다.
+        {/* //검색 중이면 검색어를, 검색하지 않으면 카테고리를 표시합니다. */}
         <span className="infoText">
           {search
             ? `검색 - "${search}"`
             : `카테고리 - ${category}`}
         </span>
 
-        //현재 페이지 번호를 표시합니다.
+        {/* //현재 페이지 번호를 표시합니다. */}
         <span className="infoText">
           페이지: {page}
         </span>
       </div>
 
-      //loading이 true일 때만 로딩 안내 화면을 표시합니다.
+      {/* //loading이 true일 때만 로딩 안내 화면을 표시합니다. */}
       {loading && (
         <div className="statusBox">
           뉴스 데이터를 불러오는 중입니다...
         </div>
       )}
 
-      //error가 있고 loading이 false일 때 오류 메시지를 표시합니다.
+      {/* //error가 있고 loading이 false일 때 오류 메시지를 표시합니다. */}
       {error && !loading && (
         <div className="errorBox">
 
-          //error상태에 저장된 오류 문구를 출력합니다.
+          {/* //error상태에 저장된 오류 문구를 출력합니다. */}
           {error}
         </div>
       )}
 
-      //로딩 중이 아니고 오류도 없으며 기사 배열이 비어 있을 때 표시합니다.
+      {/* //로딩 중이 아니고 오류도 없으며 기사 배열이 비어 있을 때 표시합니다. */}
       {!loading &&
         !error &&
         articles.length === 0 && (
@@ -409,17 +409,17 @@ function App() {
           </div>
         )}
 
-      //뉴스목록 패널과 뉴스 상세 패널을 나란히 배치하는 영역입니다.
+      {/* //뉴스목록 패널과 뉴스 상세 패널을 나란히 배치하는 영역입니다. */}
       <div className="layout">
         <section className="panel">
           <h2 className="sectionTitle">
             뉴스 목록
           </h2>
 
-          //뉴스 카드들이 반복해서 표시되는 영역입니다.
+          {/* //뉴스 카드들이 반복해서 표시되는 영역입니다. */}
           <div className="cardList">
 
-            //articles 배열의 각 기사를 뉴스 카드로 만들어 표시합니다.
+            {/* //articles 배열의 각 기사를 뉴스 카드로 만들어 표시합니다. */}
             {articles.map((article, index) => (
               <article
 
@@ -432,7 +432,7 @@ function App() {
                   setSelectedArticle(article)
                 }
               >
-                //기사 이미지가 있는지 확인합니다.
+                {/* //기사 이미지가 있는지 확인합니다. */}
                 {article.image ? (
 
                   //이미지가 있다면 이미지 요소를 화면에 표시합니다.
@@ -453,24 +453,24 @@ function App() {
                   </div>
                 )}
 
-                //기사 출처, 날짜, 제목, 설명을 담는 영역입니다.
+                {/* //기사 출처, 날짜, 제목, 설명을 담는 영역입니다. */}
                 <div className="cardContent">
 
-                  //출처와 날짜를 한줄로 표시하는 영역입니다.
+                  {/* //출처와 날짜를 한줄로 표시하는 영역입니다. */}
                   <div className="sourceRow">
 
-                    //기사를 제공한 언론사 이름을 표시합니다.
+                    {/* //기사를 제공한 언론사 이름을 표시합니다. */}
                     <span className="sourceName">
 
-                      //source가 존재할 때만 name을 읽고, 출처가 없으면 기본 문구를 표시합니다.
+                      {/* //source가 존재할 때만 name을 읽고, 출처가 없으면 기본 문구를 표시합니다. */}
                       {article.source?.name ||
                         "출처 없음"}
                     </span>
 
-                    //뉴스가 발행된 날짜와 시간을 표시합니다.
+                    {/* //뉴스가 발행된 날짜와 시간을 표시합니다. */}
                     <span className="dateText">
 
-                      //publishedAt 값이 있을 때만 날짜를 변환합니다.
+                      {/* //publishedAt 값이 있을 때만 날짜를 변환합니다. */}
                       {article.publishedAt
                         ? new Date(
 
@@ -483,12 +483,12 @@ function App() {
                     </span>
                   </div>
 
-                          //기사 제목
+                          {/* //기사 제목 */}
                   <h3 className="cardTitle">
                     {article.title}
                   </h3>
 
-                          //기사 설명
+                          {/* //기사 설명 */}
                   <p className="cardDesc">
                     {article.description ||
                       "설명이 없는 기사입니다."}
@@ -498,7 +498,7 @@ function App() {
             ))}
           </div>
 
-          //이전 페이지와 다음 페이지 버튼을 감싸는 영역
+          {/* //이전 페이지와 다음 페이지 버튼을 감싸는 영역 */}
           <div className="pagination">
             <button
               type="button"
@@ -524,19 +524,19 @@ function App() {
           </div>
         </section>
 
-            //선택한 뉴스의 상세 내용을 보여주는 오른쪽 섹션입니다.
+            {/* //선택한 뉴스의 상세 내용을 보여주는 오른쪽 섹션입니다. */}
         <section className="panel">
           <h2 className="sectionTitle">
             뉴스 상세
           </h2>
 
-            //selectedArticle 값이 있는지 확인하여 조건부 렌더링합니다.
+            {/* //selectedArticle 값이 있는지 확인하여 조건부 렌더링합니다. */}
           {selectedArticle ? (
 
             //기사를 선택했다면 상세 정보카드를 표시합니다.
             <div className="detailCard">
 
-              //상세 기사에 이미지가 있는지 검사합니다.
+              {/* //상세 기사에 이미지가 있는지 검사합니다. */}
               {selectedArticle.image ? (
 
                 //이미지가 있으면 큰 상세 이미지를 표시합니다.
@@ -557,21 +557,21 @@ function App() {
                 </div>
               )}
 
-              //기사 출처와 발행 날짜를 표시하는 영역입니다.
+              {/* //기사 출처와 발행 날짜를 표시하는 영역입니다. */}
               <div className="detailMeta">
 
-                //기사 출처 이름을 표시합니다.
+                {/* //기사 출처 이름을 표시합니다. */}
                 <span>
 
-                  //출처 이름이 없으면 출처 없음으로 표시합니다.
+                  {/* //출처 이름이 없으면 출처 없음으로 표시합니다. */}
                   {selectedArticle.source?.name ||
                     "출처 없음"}
                 </span>
 
-                //기사 발행 날짜를 표시합니다.
+                {/* //기사 발행 날짜를 표시합니다. */}
                 <span>
 
-                  //날짜 정보가 있을 때만 한국 형식으로 변환합니다.
+                  {/* //날짜 정보가 있을 때만 한국 형식으로 변환합니다. */}
                   {selectedArticle.publishedAt
                     ? new Date(
                         selectedArticle.publishedAt
@@ -580,28 +580,28 @@ function App() {
                 </span>
               </div>
 
-              //선택한 기사의 제목을 표시합니다.
+              {/* //선택한 기사의 제목을 표시합니다. */}
               <h2 className="detailTitle">
                 {selectedArticle.title}
               </h2>
 
-                //선택한 기사의 요약 설명을 표시합니다.
+                {/* //선택한 기사의 요약 설명을 표시합니다. */}
               <p className="detailDescription">
 
-                //설명이 없다면 기본 안내 문구를 표시합니다.
+                {/* //설명이 없다면 기본 안내 문구를 표시합니다. */}
                 {selectedArticle.description ||
                   "요약 정보가 없습니다."}
               </p>
 
-                  //선택한 기사의 본문 미리보기 내용을 표시합니다.
+                  {/* //선택한 기사의 본문 미리보기 내용을 표시합니다. */}
               <p className="detailContent">
 
-                //본문이 없다면 기본 안내 문구를 표시합니다.
+                {/* //본문이 없다면 기본 안내 문구를 표시합니다. */}
                 {selectedArticle.content ||
                   "본문 미리보기가 없습니다."}
               </p>
 
-              //실제 뉴스 원문 페이지로 이동하는 링크입니다.
+              {/* //실제 뉴스 원문 페이지로 이동하는 링크입니다. */}
               <a
 
                   //선택한 기사의 원문 주소를 링크 주소로 사용합니다.

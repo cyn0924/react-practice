@@ -222,16 +222,16 @@ function App() {
     //비밀번호 변경 화면 전체를 감싸는 가장 바깥쪽 영역입니다.
     <div className="container">
 
-      //비밀번호 변경 페이지의 제목입니다.
+      {/* //비밀번호 변경 페이지의 제목입니다. */}
       <h1 className="title">비밀번호 변경</h1>
 
-      //비밀번호 입력 폼과 현재 비밀번호 정보를 감싸는 카드 영역입니다.
+      {/* //비밀번호 입력 폼과 현재 비밀번호 정보를 감싸는 카드 영역입니다. */}
       <div className="card">
 
-        //폼을 제출하면 handleSubmit 함수가 실행됩니다.
+        {/* //폼을 제출하면 handleSubmit 함수가 실행됩니다. */}
         <form onSubmit={handleSubmit}>
 
-          //현재 비밀번호를 입력하는 input 요소입니다.
+          {/* //현재 비밀번호를 입력하는 input 요소입니다. */}
           <input
 
             //입력한 글자가 화면에 그대로 보이지 않도록 password 타입을 사용합니다.
@@ -250,14 +250,14 @@ function App() {
             placeholder="현재 비밀번호"
           />
 
-          //현재 비밀번호 에러 메시지가 있을 대만 p요소를 화면에 표시합니다.
+          {/* //현재 비밀번호 에러 메시지가 있을 대만 p요소를 화면에 표시합니다. */}
           {errors.currentPassword && (
 
             //erros.currentPassword에 저장된 에러 문구를 출력합니다.
             <p className="error">{errors.currentPassword}</p>
           )}
 
-          //새로 사용할 비밀번호를 입력하는 input 요소입니다.
+          {/* //새로 사용할 비밀번호를 입력하는 input 요소입니다. */}
           <input
             type="password"
             name="newPassword"
@@ -270,7 +270,7 @@ function App() {
             placeholder="새 비밀번호"
           />
 
-          //새 비밀번호에 에러가 발생한다면 p요소 안에 있는 에러 메시지가 표시됩니다.
+          {/* //새 비밀번호에 에러가 발생한다면 p요소 안에 있는 에러 메시지가 표시됩니다. */}
           {errors.newPassword && (
             <p className="error">{errors.newPassword}</p>
           )}
@@ -288,18 +288,18 @@ function App() {
             <p className="error">{errors.confirmPassword}</p>
           )}
 
-          //이 버튼을 누르면 form이 제출되고 handleSubmit 함수가 실행됩니다.
+          {/* //이 버튼을 누르면 form이 제출되고 handleSubmit 함수가 실행됩니다. */}
           <button type="submit">변경</button>
         </form>
 
-          //현재 savedPassword 상태에 저장된 비밀번호를 보여주는 영역입니다.
-          //학습용 예제이므로 비밀번호를 화면에 표시하지만 실제 서비스에서는 표시한 안됩니다.
+          {/* //현재 savedPassword 상태에 저장된 비밀번호를 보여주는 영역입니다. */}
+          {/* //학습용 예제이므로 비밀번호를 화면에 표시하지만 실제 서비스에서는 표시한 안됩니다. */}
         <div className="infoBox">
           현재 비밀번호: {savedPassword}
         </div>
       </div>
 
-      //메시지 값이 빈 문자열이 아닐 때만 성공 메시지를 화면에 표시합니다.
+      {/* //메시지 값이 빈 문자열이 아닐 때만 성공 메시지를 화면에 표시합니다. */}
       {message && <p className="success">{message}</p>}
     </div>
   );
