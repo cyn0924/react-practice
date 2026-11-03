@@ -35,13 +35,13 @@ jobs:
         working-directory: card_slide
         run: |
           npm ci
-          npm run build -- --outDir ../../public/card_slide
+          npm run build -- --outDir ../public/card_slide
 
       - name: Build study_timer
         working-directory: study_timer
         run: |
           npm ci
-          npm run build -- --outDir ../../public/study_timer
+          npm run build -- --outDir ../public/study_timer
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
