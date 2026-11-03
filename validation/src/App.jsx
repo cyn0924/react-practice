@@ -205,8 +205,8 @@ function App() {
     <div className="container">
       <h1 className="title">회원가입</h1>
 
-      //회원가입 버튼을 누르면 handleSubmit 함수를 실행합니다.
-      //noValidate 브라우저의 기본 유효성 검사를 사용하지 않고 React에서 작성한 validate 함수로 직접 검사합니다.
+      {/* //회원가입 버튼을 누르면 handleSubmit 함수를 실행합니다. */}
+      {/* //noValidate 브라우저의 기본 유효성 검사를 사용하지 않고 React에서 작성한 validate 함수로 직접 검사합니다. */}
       <form onSubmit={handleSubmit} className="card" noValidate>
         <input
           type="text"
@@ -220,8 +220,8 @@ function App() {
           placeholder="이름"
         />
 
-        //errors.name에 오류 메시지가 있을 때만 p요소를 표시합니다.
-        //오류 메시지가 빈 문자열이면 화면에 아무것도 표시하지 않습니다.
+        {/* //errors.name에 오류 메시지가 있을 때만 p요소를 표시합니다. */}
+        {/* //오류 메시지가 빈 문자열이면 화면에 아무것도 표시하지 않습니다. */}
         {errors.name && <p className="error">{errors.name}</p>}
 
         <input
@@ -261,8 +261,8 @@ function App() {
         <button type="submit">회원가입</button>
       </form>
 
-      //successMessage에 메시지가 있을 때만 성공 문구를 표시합니다.
-      //빈문자열이면 false판단을 해서 p요소를 표시하지 않습니다.
+      {/* //successMessage에 메시지가 있을 때만 성공 문구를 표시합니다.
+      //빈문자열이면 false판단을 해서 p요소를 표시하지 않습니다. */}
       {successMessage && (
         <p className="success">{successMessage}</p>
       )}
