@@ -1,0 +1,258 @@
+:root {
+  font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
+  color: #1e293b;
+  background: #f4f6fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: block;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(
+      circle at 12% 0%,
+      rgba(191, 219, 254, 0.55),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 90% 15%,
+      rgba(221, 214, 254, 0.5),
+      transparent 35%
+    ),
+    #f4f6fb;
+}
+
+#root {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+.container {
+  width: min(820px, calc(100% - 32px));
+  margin: 80px auto;
+  padding: 40px;
+  border: 1px solid #e2e8f0;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+}
+
+.title {
+  margin: 0;
+  color: #111827;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: -0.055em;
+}
+
+.title::after {
+  display: block;
+  width: 52px;
+  height: 5px;
+  margin-top: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
+  content: "";
+}
+
+.description {
+  margin: 19px 0 30px;
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+.accordionWrap {
+  display: grid;
+  gap: 13px;
+}
+
+.card {
+  min-width: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: #ffffff;
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  border-color: #c7d2fe;
+  box-shadow: 0 8px 22px rgba(79, 70, 229, 0.06);
+}
+
+.card:has(.answerBox) {
+  border-color: #a5b4fc;
+  box-shadow: 0 10px 28px rgba(79, 70, 229, 0.1);
+}
+
+.questionButton {
+  display: flex;
+  width: 100%;
+  min-height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px 22px;
+  border: 0;
+  color: #334155;
+  text-align: left;
+  background: #ffffff;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.questionButton:hover {
+  color: #4f46e5;
+  background: #f8faff;
+}
+
+.questionButton:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 3px solid #818cf8;
+  outline-offset: -3px;
+}
+
+.card:has(.answerBox) .questionButton {
+  color: #4338ca;
+  background: #eef2ff;
+}
+
+.questionText {
+  min-width: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: -0.025em;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.icon {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  place-items: center;
+  color: #6366f1;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1;
+  background: #f1f5f9;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.card:has(.answerBox) .icon {
+  color: #ffffff;
+  background: #6366f1;
+}
+
+.answerBox {
+  padding: 21px 22px 24px;
+  border-top: 1px solid #e0e7ff;
+  background: linear-gradient(135deg, #ffffff, #fafaff);
+  animation: answerShow 0.25s ease-out;
+}
+
+.answerText {
+  margin: 0;
+  padding-left: 15px;
+  border-left: 3px solid #c7d2fe;
+  color: #64748b;
+  font-size: 0.94rem;
+  line-height: 1.85;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+@keyframes answerShow {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    margin: 35px auto;
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+
+  .description {
+    margin-bottom: 24px;
+    font-size: 0.88rem;
+  }
+
+  .accordionWrap {
+    gap: 11px;
+  }
+
+  .card {
+    border-radius: 13px;
+  }
+
+  .questionButton {
+    min-height: 68px;
+    gap: 12px;
+    padding: 17px 15px;
+  }
+
+  .questionText {
+    font-size: 0.9rem;
+  }
+
+  .icon {
+    width: 29px;
+    height: 29px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+  }
+
+  .answerBox {
+    padding: 18px 15px 21px;
+  }
+
+  .answerText {
+    padding-left: 12px;
+    font-size: 0.86rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
